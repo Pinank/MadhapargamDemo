@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'Category',
     'Events',
     'Projects',
+    'DeviceInfo',
+    'OTPInfo',
 ]
 
 MIDDLEWARE = [
