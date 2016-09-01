@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'NewsFeed',
     'Category',
     'Events',
+    'Projects',
 ]
 
 MIDDLEWARE = [

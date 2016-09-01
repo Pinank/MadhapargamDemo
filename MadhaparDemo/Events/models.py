@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from Location.models import Location
+from gamuser.models import UserInfo
 
 def upload_location(instance, filename):
 	return "%s/%s" %(instance.event_id, filename) 
@@ -43,9 +44,22 @@ class EventAlbum(models.Model):
 	height_field = models.IntegerField(default = 0)
 
 	def __str__(self):
-		return self.event_id.event_name
+		return self.event.event_name
 
 
 class EventStatusOfUser(models.Model):
-	
+	event_status_id = models.AutoField(primary_key=True)
+	event = models.ForeignKey(Event,on_delete=models.CASCADE, verbose_name="Select Event")
+	user = models.ForeignKey(UserInfo, on_delete=models.CASCADE, verbose_name="Select User")
+	event_status_date = models.DateField(auto_now = True, auto_now_add=False)
+	EVENT_STATUS_TYPE = (
+		('1','Going'),
+		('2','Interested'),
+		('3','Maybe'),
+		)
+	event_user_status = models.CharField(max_length=3, choices = EVENT_STATUS_TYPE)
+
+	def __str__(self):
+		return self.event.event_name
+
 		
