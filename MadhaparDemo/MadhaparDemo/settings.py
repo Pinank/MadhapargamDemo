@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'gamuser',
     'Location',
     'NewsFeed',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'Projects',
     'DeviceInfo',
     'OTPInfo',
+    'snippets',
 ]
 
 MIDDLEWARE = [
