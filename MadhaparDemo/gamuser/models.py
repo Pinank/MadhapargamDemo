@@ -28,8 +28,8 @@ class UserInfo(models.Model):
 	user_created_date = models.DateField(auto_now = True, auto_now_add=False)
 	user_updated_date = models.DateField(auto_now = True, auto_now_add=False)
 
-	def get_name(self):
-		return "%s %s" % (self.user_firstname, self.user_lastname)
+	# def get_name(self):
+	# 	return "%s %s" % (self.user_firstname, self.user_lastname)
 
 	def __str__(self):
 		return "%s %s" % (self.user_firstname, self.user_lastname)

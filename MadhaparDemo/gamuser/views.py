@@ -24,8 +24,10 @@ class UserList(ListCreateAPIView):
 
 	def create(self, request, *args, **kwargs):
 		location_id = self.request.data.get("user_location_id")
+		location = Location.objects.get(pk=location_id)
 		serializer = self.get_serializer(data=request.data, partial=True)
 		serializer.is_valid(raise_exception=True)
+		serializer.save(user_location_id=location)
 		self.perform_create(serializer)
 		response = {
 				"status" : status.HTTP_201_CREATED,
@@ -50,9 +52,14 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
 
 	def update(self, request, *args, **kwargs):
 		instance = self.get_object()
+		location_id = self.request.data.get("user_location_id")
 		serializer = self.get_serializer(instance, data=request.data, partial=True)
-		# serializer = self.get_serializer(instance, data=request.data)
-		serializer.is_valid(raise_exception=True)
+		if location_id != None:
+			location = Location.objects.get(pk=location_id)
+			serializer.is_valid(raise_exception=True)
+			serializer.save(user_location_id=location)
+		else :
+			serializer.is_valid(raise_exception=True)
 		self.perform_update(serializer)
 		response = {
 				"status" : status.HTTP_200_OK,
