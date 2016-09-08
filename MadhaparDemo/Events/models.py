@@ -45,8 +45,7 @@ class EventAlbum(models.Model):
 
 	def __str__(self):
 		return self.event.event_name
-
-
+		
 class EventStatusOfUser(models.Model):
 	event_status_id = models.AutoField(primary_key=True)
 	event = models.ForeignKey(Event,on_delete=models.CASCADE, verbose_name="Select Event")

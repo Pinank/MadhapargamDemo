@@ -23,7 +23,6 @@ class UserInfo(models.Model):
 	user_blood_group = models.CharField(max_length=5, verbose_name = "Blood Group")
 	user_location_id = models.ForeignKey(Location, on_delete=models.CASCADE, verbose_name = "Current Location")
 	user_profession = models.CharField(max_length=20, verbose_name = "Profession")
-	
 	user_fb_id = models.CharField(max_length=20, verbose_name = "Facebook Contact", blank=True)
 	user_random_id = models.CharField(max_length=20, verbose_name = "Registration Id")
 	user_created_date = models.DateField(auto_now = True, auto_now_add=False)

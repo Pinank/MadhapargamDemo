@@ -76,6 +76,10 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 10
+}
+
 WSGI_APPLICATION = 'MadhaparDemo.wsgi.application'
 
 

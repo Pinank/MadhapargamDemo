@@ -30,7 +30,6 @@ class Project(models.Model):
 	def __str__(self):
 		return self.project_name
 
-
 class ProjectAlbum(models.Model):
 	project_album_id = models.AutoField(primary_key=True)
 	project = models.ForeignKey(Project,on_delete=models.CASCADE, verbose_name = "Select Project")
