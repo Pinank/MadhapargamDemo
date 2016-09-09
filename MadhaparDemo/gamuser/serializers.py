@@ -4,20 +4,21 @@ from .models import UserInfo
 from Location.serializers import LocationSerializer
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-	id = serializers.IntegerField(source='user_id')
-	fistname = serializers.CharField(source='user_firstname')
-	lastname = serializers.CharField(source='user_lastname')
-	email = serializers.EmailField(source='user_email')
-	dob = serializers.DateField(source='user_dob')
-	contactNo = serializers.CharField(source='user_mobileno')
-	image = serializers.ImageField(max_length=10, allow_empty_file=True, source="user_image")
-	bloodGroup = serializers.CharField(source='user_blood_group')
-	location = LocationSerializer(source='user_location_id')
-	profession = serializers.CharField(source='user_profession')
-	fbId = serializers.CharField(source='user_fb_id')
-	userId = serializers.CharField(source='user_random_id')
+	userId = serializers.IntegerField(source='user_id')
+	# firstName = serializers.CharField(source='user_firstname')
+	# lastName = serializers.CharField(source='user_lastname')
+	name = serializers.CharField(source='get_name', read_only=True)
+	userEmail = serializers.EmailField(source='user_email')
+	userDob = serializers.DateField(source='user_dob')
+	userMobileNo = serializers.CharField(source='user_mobileno')
+	userImage = serializers.ImageField(max_length=10, allow_empty_file=True, source="user_image")
+	userBloodGroup = serializers.CharField(source='user_blood_group')
+	userLocation = LocationSerializer(source='user_location_id')
+	userProfession = serializers.CharField(source='user_profession')
+	userFbId = serializers.CharField(source='user_fb_id')
+	userRegId = serializers.CharField(source='user_random_id')
 
 	class Meta:
 		model = UserInfo
-		# fields = ['user_id','user_firstname', 'user_lastname' ,'user_email','user_dob','user_mobileno','user_image','user_blood_group','user_profession','user_fb_id','user_random_id','location']
-		fields = ["id", "fistname", "lastname", "email", "dob", "contactNo", "image", "bloodGroup", "location", "profession", "fbId", "userId"]
+		fields = ["userId","name", "userEmail", "userDob", "userMobileNo",  "userImage", 
+		"userBloodGroup", "userLocation", "userProfession", "userFbId", "userRegId"]
