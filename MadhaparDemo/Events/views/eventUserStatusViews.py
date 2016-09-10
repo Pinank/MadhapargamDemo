@@ -3,52 +3,48 @@ from django.http import Http404
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from .models import UserInfo
+from Events.models import Event, EventAlbum, EventStatusOfUser
+from Events.serializers import EventSerializer, EventAlbumSerializer, EventUserStatusSerializer
 from Location.models import Location
-from .serializers import UserSerializer
+from gamuser.models import UserInfo
 from MadhaparDemo import constant
 
-class UserList(ListCreateAPIView):
-	queryset = UserInfo.objects.all()
-	serializer_class = UserSerializer
+class EventUserStatusList(ListCreateAPIView):
+	queryset = EventStatusOfUser.objects.all()
+	serializer_class = EventUserStatusSerializer
 
 	def list(self, request, *args, **kwargs):
 		queryset = self.get_queryset()
-		serializer = UserSerializer(queryset, many=True)
+		serializer = EventUserStatusSerializer(queryset, many=True)
 		response = {
 				"status" : status.HTTP_200_OK,
-				"message" : constant.MEMBER_LIST,
+				"message" : constant.EVENT_USER_STATUS_LIST,
 				"response" : serializer.data
 			}
 		return Response(response)
 
 	def create(self, request, *args, **kwargs):
-		locationId = self.request.data.get("userLocation")
-		# name = self.request.data.get("userName")
-		location = Location.objects.get(pk=locationId)
+		eventId = self.request.data.get("eventId")
+		userId = self.request.data.get("userId")
+		event = Event.objects.get(pk=eventId)
+		user = UserInfo.objects.get(pk=userId)
 		serializer = self.get_serializer(data=request.data, partial=True)
-		# firtName = ''
-		# lastName = ''
-		# if name != None :
-		# 	firtName = name.split(' ')[0]
-		# 	lastName = name.split(' ')[1]
 		serializer.is_valid(raise_exception=True)
-		serializer.save(user_location_id=location)
-		# serializer.save(user_firstname = firtName , user_lastname = lastName, user_location_id=location)		
+		serializer.save(event_id=event, user_id=user)
 		self.perform_create(serializer)
 		response = {
 				"status" : status.HTTP_201_CREATED,
-				"message" : constant.MEMBER_CREATE,
+				"message" : constant.EVENT_USER_STATUS_CREATE,
 				"response" : serializer.data
 			}
 		return Response(response)
 
-class UserDetail(RetrieveUpdateDestroyAPIView):
-	serializer_class = UserSerializer
+class EventUserStatusDetail(RetrieveUpdateDestroyAPIView):
+	serializer_class = EventUserStatusSerializer
 
 	def get_object(self, request, *args, **kwargs):
 		try:
-			return UserInfo.objects.get(pk=kwargs['pk'])
+			return EventStatusOfUser.objects.get(pk=kwargs['pk'])
 		except Exception, e:
 			raise Http404
 
@@ -57,25 +53,27 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
 		serializer = self.get_serializer(instance)
 		response = {
 				"status" : status.HTTP_200_OK,
-				"message" : constant.MEMBER_DETAIL,
+				"message" : constant.EVENT_USER_STATUS_DETAIL,
 				"response" : serializer.data
 			}
 		return Response(response)
 
 	def update(self, request, *args, **kwargs):
 		instance = self.get_object(self, request, *args, **kwargs)
-		locationId = self.request.data.get("userLocation")
+		eventId = self.request.data.get("eventId")
+		userId = self.request.data.get("userId")
 		serializer = self.get_serializer(instance, data=request.data, partial=True)
-		if locationId != None:
-			location = Location.objects.get(pk=locationId)
+		if eventId != None and userId != None:
+			event = Event.objects.get(pk=eventId)
+			user = UserInfo.objects.get(pk=userId)
 			serializer.is_valid(raise_exception=True)
-			serializer.save(user_location_id=location)
+			serializer.save(event_id=event, user_id=user)
 		else :
 			serializer.is_valid(raise_exception=True)
 		self.perform_update(serializer)
 		response = {
 				"status" : status.HTTP_200_OK,
-				"message" : constant.MEMBER_UPDATE,
+				"message" : constant.EVENT_USER_STATUS_UPDATE,
 				"response" : serializer.data
 			}
 		return Response(response)
@@ -85,6 +83,6 @@ class UserDetail(RetrieveUpdateDestroyAPIView):
 		self.perform_destroy(instance)
 		response = {
 				"status" : status.HTTP_204_NO_CONTENT,
-				"message" : constant.MEMBER_DELETE,
+				"message" : constant.EVENT_USER_STATUS_DELETE,
 			}
 		return Response(response)

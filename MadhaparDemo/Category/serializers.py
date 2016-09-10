@@ -4,9 +4,9 @@ from django.core.serializers.json import Serializer
 from .models import Category
 
 class CategorySerializer(serializers.ModelSerializer) :
-	id = serializers.IntegerField(source='category_id')
-	name = serializers.CharField(source='category_name')
+	categoryId = serializers.IntegerField(source='category_id')
+	categoryName = serializers.CharField(source='category_name')
 
 	class Meta:
 		model = Category
-		fields = ['id', 'name']
+		fields = ['categoryId', 'categoryName']

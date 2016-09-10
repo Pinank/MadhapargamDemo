@@ -29,8 +29,9 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     # url(r'^snippets/', include('snippets.urls')),
-    url(r'^categories/', include('Category.urls')),
-    url(r'^locations/',include('Location.urls')),
+    url(r'^category/', include('Category.urls')),
+    url(r'^location/',include('Location.urls')),
     url(r'^gamuser/',include('gamuser.urls')),
+    url(r'^event/',include('Events.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
