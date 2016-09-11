@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'Projects',
     'DeviceInfo',
     'OTPInfo',
+    'Feedback',
     'snippets',
 ]
 
