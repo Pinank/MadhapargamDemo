@@ -1,3 +1,21 @@
+# DeviceInfo API Response Messages
+
+# DeviceInfo API Response Messages
+
+DEVICE_LIST = "Device List."
+DEVICE_CREATE = "Device Created."
+DEVICE_DETAIL = "Device Detail."
+DEVICE_UPDATE = "Device Updated."
+DEVICE_DELETE = "Device Deleted."
+
+# OTP API Response Messages
+
+OTP_LIST = "OTP List"
+OTP_CREATE = "OTP Created."
+OTP_DETAIL = "OTP Detail."
+OTP_UPDATE = "OTP Updated."
+OTP_DELETE = "OTP Deleted."
+
 #Event User Status API Response Messages
 
 EVENT_USER_STATUS_LIST = "Event User Status List."

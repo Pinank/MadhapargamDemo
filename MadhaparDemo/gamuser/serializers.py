@@ -3,7 +3,7 @@ from django.core.serializers.json import Serializer
 from .models import UserInfo
 from Location.serializers import LocationSerializer
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
 	userId = serializers.IntegerField(source='user_id')
 	userFirstName = serializers.CharField(source='user_firstname')
 	userLastName = serializers.CharField(source='user_lastname')

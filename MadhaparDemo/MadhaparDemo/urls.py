@@ -33,5 +33,9 @@ urlpatterns = [
     url(r'^location/',include('Location.urls')),
     url(r'^gamuser/',include('gamuser.urls')),
     url(r'^event/',include('Events.urls')),
+    url(r'^deviceInfo/',include('DeviceInfo.urls')),
+    url(r'^newsFeed/',include('NewsFeed.urls')),
+    url(r'^project/',include('Projects.urls')),
+    url(r'^otp/',include('OTPInfo.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
