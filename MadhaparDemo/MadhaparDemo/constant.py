@@ -1,4 +1,18 @@
-# DeviceInfo API Response Messages
+# Project API Response Messages
+
+PROJECT_LIST = "Project List."
+PROJECT_CREATE = "Project Created."
+PROJECT_DETAIL = "Project Detail."
+PROJECT_UPDATE = "Project Updated."
+PROJECT_DELETE = "Project Deleted."
+
+# Project Album API Response Messages
+
+PROJECT_ALBUM_LIST = "Project Album List."
+PROJECT_ALBUM_CREATE = "Project Album Created."
+PROJECT_ALBUM_DETAIL = "Project Album Detail."
+PROJECT_ALBUM_UPDATE = "Project Album Updated."
+PROJECT_ALBUM_DELETE = "Project Album Deleted."
 
 # DeviceInfo API Response Messages
 
