@@ -37,5 +37,6 @@ urlpatterns = [
     url(r'^newsFeed/',include('NewsFeed.urls')),
     url(r'^project/',include('Projects.urls')),
     url(r'^otp/',include('OTPInfo.urls')),
+    url(r'^feedback/',include('Feedback.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

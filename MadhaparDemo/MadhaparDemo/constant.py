@@ -1,3 +1,27 @@
+# Feedback API Response Messages
+
+FEEDBACK_LIST = "Feedback List."
+FEEDBACK_CREATE = "Feedback Created."
+FEEDBACK_DETAIL = "Feedback Detail."
+FEEDBACK_UPDATE = "Feedback Updated."
+FEEDBACK_DELETE = "Feedback Deleted."
+
+# NewsfeedStaus API Response Messages
+
+NEWSFEED_STATUS_LIST = "Newsfeed Status List."
+NEWSFEED_STATUS_CREATE = "Newsfeed Status Created."
+NEWSFEED_STATUS_DETAIL = "Newsfeed Status Detail."
+NEWSFEED_STATUS_UPDATE = "Newsfeed Status Updated."
+NEWSFEED_STATUS_DELETE = "Newsfeed Status Deleted."
+
+# Newsfeed API Response Messages
+
+NEWSFEED_LIST = "Newsfeed List."
+NEWSFEED_CREATE = "Newsfeed Created."
+NEWSFEED_DETAIL = "Newsfeed Detail."
+NEWSFEED_UPDATE = "Newsfeed Updated."
+NEWSFEED_DELETE = "Newsfeed Deleted."
+
 # Project API Response Messages
 
 PROJECT_LIST = "Project List."
